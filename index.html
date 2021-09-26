@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Yuzhuo's Map</title>
     <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
     <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
@@ -13,14 +14,13 @@
 </head>
 <body>
 
-    <div id="Assignment2_map"></div>
+    <div id="Happiness_map"></div>
 
     <script type = "text/javascript">
         var spec2 = "A2_js_file/Assignment2_map.vg.json";
-        vegaEmbed('#Assignment2_map', spec2).then(function(result) {
+        vegaEmbed('#Happiness_map', spec2).then(function(result) {
         // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         }).catch(console.error);
     </script>
-
 </body>
 </html>
