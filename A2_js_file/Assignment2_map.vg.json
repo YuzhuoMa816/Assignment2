@@ -25,7 +25,6 @@
         },
         {"calculate": "datum.Ladderscore","as":"Ladderscore"}
     ],
-    
     "mark":{
         "type":"geoshape"
         },
@@ -33,7 +32,8 @@
         "color":{
             "field": "Ladderscore",
             "type":  "quantitative",
-            "scale": {"type": "linear"}
+            "scale": {"type": "linear","scheme":"purples"}
+           
         },
         "tooltip": [
             {"field": "properties.NAME" , "type": "nominal", "title": "Country_name"},
