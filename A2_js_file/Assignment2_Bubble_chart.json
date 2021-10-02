@@ -1,0 +1,135 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "LowerWhisker and UpperWhisker",
+    "width": 800,
+    "height": 600,
+    "data":{
+        "url":"https://raw.githubusercontent.com/YuzhuoMa816/vega_lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
+    },
+    "params": [
+        {
+            "name":"Region_selection",
+            "bind":{
+                "input": "select",
+                "options":[
+                    null,
+                    "Western Europe",
+                    "Middle East and North Africa",
+                    "North America and ANZ",
+                    "Latin America and Caribbean",
+                    "Central and Eastern Europe",
+                    "East Asia",
+                    "Southeast Asia",
+                    "Commonwealth of Independent States",
+                    "Sub-Saharan Africa",
+                    "South Asia"
+                ],
+                "labels": [
+                    "Show All",
+                    "Western Europe",
+                    "Middle East and North Africa",
+                    "North America and ANZ",
+                    "Latin America and Caribbean",
+                    "Central and Eastern Europe",
+                    "East Asia",
+                    "Southeast Asia",
+                    "Commonwealth of Independent States",
+                    "Sub-Saharan Africa",
+                    "South Asia"
+                ],
+                "name": "Region Selection: "
+            }
+        }
+    ],
+    "transform": [
+        {"filter": "datum.upperwhisker > 0"},
+        {"filter": "datum.lowerwhisker > 0"},
+        {"filter": "Region_selection == null || datum.Regional_indicator == Region_selection"},
+        {
+            "calculate": "",
+            "as": ""
+        }
+    ],
+    "encoding": {
+        "x": {
+            "field": "upperwhisker",
+            "type": "quantitative",
+            "title": "Upper whisker",
+            "axis": {"tickCount": 7},
+            "scale": {"type": "log", "domain": [1, 8]}
+        },
+        "y":{
+            "field": "lowerwhisker",
+            "type": "quantitative",
+            "axis": {"tickCount": 7},
+            "scale": {"type": "log", "domain": [1, 8]}
+        }
+    },
+    "layer": [
+        {
+            "selection":{
+                "continent_highlight":{
+                    "type": "multi",
+                    "fields" :["Regional_indicator"],
+                    "bind": "legend"
+                }
+            },
+            "mark": "circle",
+            "encoding": {
+                "size":{
+                    "field":"Ladderscore",
+                    "type": "quantitative",
+                    "scale": {
+                        "type": "threshold",
+                        "domain": [2, 3, 4, 5, 6, 7, 8],
+                        "range": [10, 40, 100, 130, 220, 280, 350, 400]
+                      },
+                    "legend": {"format": ".1s"}
+                },
+                "color":{
+                    "field":"Continent",
+                    "type": "nominal",
+                    "scale":{
+                        "domain":[
+                            "Western Europe",
+                            "Middle East and North Africa",
+                            "North America and ANZ",
+                            "Latin America and Caribbean",
+                            "Central and Eastern Europe",
+                            "East Asia",
+                            "Southeast Asia",
+                            "Commonwealth of Independent States",
+                            "Sub-Saharan Africa",
+                            "South Asia"
+                        ],
+                        "range":[
+                            "#627582",
+                            "#445588",
+                            "#458032",
+                            "#7711cc",
+                            "#d8dbd7",
+                            "#800000",
+                            "#cfe2f3",
+                            "#896289",
+                            "#ff8888",
+                            "#fabb88"
+                        ]
+                    }
+                },
+                "opacity":{
+                    "condition": {"selection": "continent_highlight", "value": 0.6},
+                    "value": 0.2
+                },
+                "tooltip":[
+                    {"field": "Country", "type": "nominal"},
+                    {"field": "Happiness", "type": "quantitative", "format": ","},
+                    {"field": "Logged GDP", "type": "quantitative", "format": ","},
+                    {"field": "Social support", "type": "quantitative", "format": ","},
+                    {"field": "Freedom to make life choices", "type": "quantitative", "format": ","},
+                    {"field": "Healthylife expectancy", "type": "quantitative", "format": ","},
+                ]
+            }
+        }
+       
+    ]
+}
