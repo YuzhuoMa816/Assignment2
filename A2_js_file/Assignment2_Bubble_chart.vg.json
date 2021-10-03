@@ -1,10 +1,10 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": "LowerWhisker and UpperWhisker",
-    "width": 800,
-    "height": 600,
+    "width": 400,
+    "height": 400,
     "data":{
-        "url":"https://raw.githubusercontent.com/YuzhuoMa816/vega_lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
+        "url": "https://raw.githubusercontent.com/YuzhuoMa816/Assignment2/master/A2_data/world-happiness-report-2021.csv"
     },
     "params": [
         {
@@ -42,13 +42,7 @@
         }
     ],
     "transform": [
-        {"filter": "datum.upperwhisker > 0"},
-        {"filter": "datum.lowerwhisker > 0"},
-        {"filter": "Region_selection == null || datum.Regional_indicator == Region_selection"},
-        {
-            "calculate": "",
-            "as": ""
-        }
+        {"filter": "Region_selection == null || datum.Regional_indicator == Region_selection"}
     ],
     "encoding": {
         "x": {
@@ -56,22 +50,22 @@
             "type": "quantitative",
             "title": "Upper whisker",
             "axis": {"tickCount": 7},
-            "scale": {"type": "log", "domain": [1, 8]}
+            "scale": {"type": "linear", "domain": [1, 8]}
         },
         "y":{
-            "field": "lowerwhisker",
+            "field": "Freedom_to_make_life_choices",
             "type": "quantitative",
             "axis": {"tickCount": 7},
-            "scale": {"type": "log", "domain": [1, 8]}
+            "scale": {"type": "linear", "domain": [0.3,1]}
         }
     },
     "layer": [
         {
             "selection":{
                 "continent_highlight":{
-                    "type": "multi",
-                    "fields" :["Regional_indicator"],
-                    "bind": "legend"
+                "type": "multi",
+                "fields" :["Regional_indicator"],
+                "bind": "legend"
                 }
             },
             "mark": "circle",
@@ -82,12 +76,12 @@
                     "scale": {
                         "type": "threshold",
                         "domain": [2, 3, 4, 5, 6, 7, 8],
-                        "range": [10, 40, 100, 130, 220, 280, 350, 400]
+                        "range": [10, 30, 70, 130, 220, 380, 500, 600]
                       },
                     "legend": {"format": ".1s"}
                 },
                 "color":{
-                    "field":"Continent",
+                    "field":"Regional_indicator",
                     "type": "nominal",
                     "scale":{
                         "domain":[
@@ -103,16 +97,16 @@
                             "South Asia"
                         ],
                         "range":[
-                            "#627582",
-                            "#445588",
-                            "#458032",
-                            "#7711cc",
-                            "#d8dbd7",
                             "#800000",
-                            "#cfe2f3",
-                            "#896289",
-                            "#ff8888",
-                            "#fabb88"
+                            "#9A6324",
+                            "#808000",
+                            "#000075",
+                            "#4363d8",
+                            "#000000",
+                            "#e6194B",
+                            "#ffe119",
+                            "#911eb4",
+                            "#42d4f4"
                         ]
                     }
                 },
@@ -121,15 +115,34 @@
                     "value": 0.2
                 },
                 "tooltip":[
-                    {"field": "Country", "type": "nominal"},
-                    {"field": "Happiness", "type": "quantitative", "format": ","},
-                    {"field": "Logged GDP", "type": "quantitative", "format": ","},
-                    {"field": "Social support", "type": "quantitative", "format": ","},
-                    {"field": "Freedom to make life choices", "type": "quantitative", "format": ","},
-                    {"field": "Healthylife expectancy", "type": "quantitative", "format": ","},
+                    {"field": "Country_name", "type": "nominal"},
+                    {"field": "Ladderscore", "type": "quantitative", "format": ","},
+                    {"field": "Logged_GDP_per_capita", "type": "quantitative", "format": ","},
+                    {"field": "Social_support", "type": "quantitative", "format": ","},
+                    {"field": "Freedom_to_make_life_choices", "type": "quantitative", "format": ","},
+                    {"field": "Healthy_life_expectancy", "type": "quantitative", "format": ","}
                 ]
             }
+        },
+        {
+            "mark":{
+                "type": "text",
+                "align":"right",
+                "baseline": "middle",
+                "dx": -12,
+                "fontSize": 11.5,
+                "fontStyle": "italic"
+            },
+            "encoding": {
+                "text":{"field":"Country_name", "type": "nominal"},
+                "opacity": {
+                    "condition": {
+                      "test": "datum['Country_name'] == 'Finland' || datum['Country_name'] == 'China' || datum['Country_name'] == 'Australia' || datum['Country_name'] == 'India' || datum['Country_name'] == 'Afghanistan' ||  datum['Country_name'] == 'United States'",
+                      "value": 1
+                    },
+                    "value": 0
+                  }
+            }
         }
-       
     ]
 }

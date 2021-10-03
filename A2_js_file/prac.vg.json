@@ -1,0 +1,26 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "LowerWhisker and UpperWhisker",
+    "width": 400,
+    "height": 400,
+    "data":{
+        "url": "https://raw.githubusercontent.com/YuzhuoMa816/Assignment2/master/A2_data/world-happiness-report-2021.csv"
+    },
+    "mark": "circle",
+    
+    "encoding": {
+        "x": {
+            "field": "upperwhisker",
+            "type": "quantitative",
+            "title": "Upper whisker",
+            "axis": {"tickCount": 7},
+            "scale": {"type": "linear", "domain": [1, 8]}
+        },
+        "y":{
+            "field": "lowerwhisker",
+            "type": "quantitative",
+            "axis": {"tickCount": 7},
+            "scale": {"type": "linear", "domain": [1, 8]}
+        }
+    }
+}
