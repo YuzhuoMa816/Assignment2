@@ -1,8 +1,8 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "LowerWhisker and UpperWhisker",
-    "width": 400,
-    "height": 400,
+    "title": "Freedom_to_make_life_choices and Healthy_life_expectancy",
+    "width": 500,
+    "height": 500,
     "data":{
         "url": "https://raw.githubusercontent.com/YuzhuoMa816/Assignment2/master/A2_data/world-happiness-report-2021.csv"
     },
@@ -46,17 +46,18 @@
     ],
     "encoding": {
         "x": {
-            "field": "upperwhisker",
+            "field": "Healthy_life_expectancy",
             "type": "quantitative",
-            "title": "Upper whisker",
+            "title": "Healthy life expectancy",
             "axis": {"tickCount": 7},
-            "scale": {"type": "linear", "domain": [1, 8]}
+            "scale": {"type": "linear", "domain": [45, 80]}
         },
         "y":{
-            "field": "Freedom_to_make_life_choices",
+            "field": "Logged_GDP_per_capita",
             "type": "quantitative",
-            "axis": {"tickCount": 7},
-            "scale": {"type": "linear", "domain": [0.3,1]}
+            "title": "Logged GDP per capita",
+            "axis": {"tickCount": 8},
+            "scale": {"type": "linear", "domain": [6,12]}
         }
     },
     "layer": [
@@ -111,8 +112,8 @@
                     }
                 },
                 "opacity":{
-                    "condition": {"selection": "continent_highlight", "value": 0.6},
-                    "value": 0.2
+                    "condition": {"selection": "continent_highlight", "value": 0.7},
+                    "value": 0.12
                 },
                 "tooltip":[
                     {"field": "Country_name", "type": "nominal"},
