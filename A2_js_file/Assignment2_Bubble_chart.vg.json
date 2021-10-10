@@ -116,12 +116,10 @@
                     "value": 0.12
                 },
                 "tooltip":[
-                    {"field": "Country_name", "type": "nominal"},
-                    {"field": "Ladderscore", "type": "quantitative", "format": ","},
-                    {"field": "Logged_GDP_per_capita", "type": "quantitative", "format": ","},
-                    {"field": "Social_support", "type": "quantitative", "format": ","},
-                    {"field": "Freedom_to_make_life_choices", "type": "quantitative", "format": ","},
-                    {"field": "Healthy_life_expectancy", "type": "quantitative", "format": ","}
+                    {"field": "Country_name", "type": "nominal","title":"Country Name"},
+                    {"field": "Ladderscore", "type": "quantitative", "format": ",","title":"Happiness Score"},
+                    {"field": "Logged_GDP_per_capita", "type": "quantitative", "format": ",", "title":"Capita's Logged GDP"},
+                    {"field": "Healthy_life_expectancy", "type": "quantitative", "format": ",", "title":"Healthy Life Expectancy"}
                 ]
             }
         },
