@@ -1,11 +1,12 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Freedom_to_make_life_choices and Healthy_life_expectancy",
+    "title": "Relationship between Logged_GDP_per_capita and Healthy_life_expectancy with Happiness Score",
     "width": 500,
     "height": 500,
     "data":{
         "url": "https://raw.githubusercontent.com/YuzhuoMa816/Assignment2/master/A2_data/world-happiness-report-2021.csv"
     },
+
     "params": [
         {
             "name":"Region_selection",

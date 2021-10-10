@@ -1,16 +1,16 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": "Freedom_to_make_life_choices and Healthy_life_expectancy",
-    "height": 500,
-    "data":{
+    "height": 300,
+    "data": {
         "url": "https://raw.githubusercontent.com/YuzhuoMa816/Assignment2/master/A2_data/world-happiness-report-2021.csv"
     },
     "params": [
         {
-            "name":"Region_selection",
-            "bind":{
+            "name": "Region_selection",
+            "bind": {
                 "input": "select",
-                "options":[
+                "options": [
                     null,
                     "Western Europe",
                     "Middle East and North Africa",
@@ -40,47 +40,66 @@
             }
         }
     ],
-
-    "vconcat":[
+    "transform": [
         {
-        "height":300,
-        "transform": [{
             "pivot": "symbol",
             "value": "Freedom_to_make_life_choices",
-            "groupby": ["Country_name"],
-            "filter": "Region_selection == datum.Regional_indicator[2] || datum.Regional_indicator == Region_selection"
-          }],
-        "repeat":{
-            "layer":["Social_support", "Freedom_to_make_life_choices"]
-        },
-        "spec":{
-            "layer":[{
-                "mark":{
-                    "type":"line",
-                    "point":{
+            "groupby": [
+                "Country_name"
+            ],
+            "filter": "Region_selection == null || datum.Regional_indicator == Region_selection"
+        }
+    ],
+    "repeat": {
+        "layer": [
+            "Social_support",
+            "Freedom_to_make_life_choices"
+        ]
+    },
+    "spec": {
+        "layer": [
+            {
+                "mark": {
+                    "type": "line",
+                    "point": {
                         "filled": false,
-                        "fill":"white"
+                        "fill": "white"
                     }
                 },
-                "encoding":{
+                "encoding": {
                     "x": {
                         "field": "Country_name",
                         "type": "nominal",
                         "title": "Country"
                     },
-                    "y":{
-                        "field": {"repeat": "layer"},
-                        "type":"quantitative",
-                        "axis": {"tickCount": 5},
-                        "scale": {"type": "linear", "domain": [0,1]},
+                    "y": {
+                        "field": {
+                            "repeat": "layer"
+                        },
+                        "type": "quantitative",
+                        "axis": {
+                            "tickCount": 5
+                        },
+                        "scale": {
+                            "type": "linear",
+                            "domain": [0.2,1]
+                        },
                         "title": "Freedom_to_make_life_choices"
                     },
-                    "stroke": {"datum": {"repeat": "layer"}, "type": "nominal"}
-                    
+                    "stroke": {
+                        "datum": {
+                            "repeat": "layer"
+                        },
+                        "type": "nominal"
+                    },
+                    "tooltip":[
+                        {"field": "Country_name", "type": "nominal","title":"Country Name"},
+                        {"field": "Ladderscore", "type": "quantitative", "format": ",","title":"Happiness Score"},
+                        {"field": "Social_support", "type": "quantitative", "format": ",", "title":"Social Support"},
+                        {"field": "Freedom_to_make_life_choices", "type": "quantitative", "format": ",", "title":"Life Choice Freedom"}
+                    ]
                 }
-            }]
-
-        }
+            }
+        ]
     }
-    ]
 }
