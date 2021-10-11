@@ -1,65 +1,101 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "A bar graph showing the scores of the top 5 students. This shows an example of the window transform, for how the top K (5) can be filtered, and also how a rank can be computed for each student.",
-  "title": "Top 10 happiness country in the World",
+  "title":["Top 30 High happiness countries and the trend overview"],
   "data": {
     "url": "https://raw.githubusercontent.com/YuzhuoMa816/Assignment2/master/A2_data/world-happiness-report-2021.csv"
   },
-  "transform": [
-    {
-      "window": [
+  "hconcat": [{
+    "mark": "bar",
+    "transform": [
         {
-          "op": "rank",
-          "as": "rank"
-        }
-      ],
-      "sort": [
+          "window": [
+            {
+              "op": "rank",
+              "as": "rank"
+            }
+          ],
+          "sort": [
+            {
+              "field": "Ladderscore",
+              "order": "descending"
+            }
+          ]
+        },
         {
-          "field": "Ladderscore",
-          "order": "descending"
-        }
-      ]
-    },
-    {
-      "filter": "datum.rank <= 10"
+          "filter": "datum.rank <= 30"
+        },
+        {
+      "filter": {"param": "brush"}
     }
-  ],
-  "mark": "bar",
-  "encoding": {
-    "x": {
-      "field": "Ladderscore",
-      "type": "quantitative",
-      "title":"Happiness Score"
-    },
-    "y": {
-      "field": "Country_name",
-      "type": "nominal",
-      "sort": {
-        "field": "Ladderscore",
-        "op": "average",
-        "order": "descending"
+    ],
+    "encoding": {
+      "y": {
+          "field": "Country_name",
+          "type": "nominal",
+          "axis": {"minExtent": 200, "title": null},
+          "sort": {
+            "field": "Ladderscore",
+            "op": "average",
+            "order": "descending"
+          }
+        },
+      "x": {
+          "field": "Ladderscore",
+          "type": "quantitative",
+          "axis": {"orient": "top"},
+          "scale":{"domain":  [0, 8]}
+        },
+        "color": {
+          "field": "Country_name",
+          "type": "nominal",
+          "sort": "x",
+          "scale": {
+            "scheme": "purples"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Regional_indicator",
+            "type": "nominal",
+            "title": "Regional indicator"
+          },
+          {
+            "field": "Ladderscore",
+            "type": "quantitative",
+            "format": ",",
+            "title": "Happiness Score"
+          }
+        ]
+    }
+  }, {
+    "height": 200,
+    "width": 50,
+    "params": [{
+      "name": "brush",
+      "select": {
+        "type": "interval",
+        "encodings": ["y"]
       }
-    },
-    "color": {
-      "field": "Country_name",
-      "type": "nominal",
-      "sort": "x",
-      "scale": {
-        "scheme": "purples"
-      }
-    },
-    "tooltip": [
-      {
-        "field": "Regional_indicator",
-        "type": "nominal",
-        "title": "Regional indicator"
-      },
-      {
-        "field": "Ladderscore",
-        "type": "quantitative",
-        "format": ",",
-        "title": "Happiness Score"
-      }
-    ]
+    }],
+    "mark": "bar",
+    "encoding": {
+      "y": {
+          "field": "Country_name",
+          "type": "nominal",
+          "sort": {
+            "field": "Ladderscore",
+            "op": "average",
+            "order": "descending"
+          },
+          "axis":null
+        },
+      "x": {
+          "field": "Ladderscore",
+          "type": "quantitative",
+          "axis":null
+          
+        }
+    }
   }
+  ]
 }
