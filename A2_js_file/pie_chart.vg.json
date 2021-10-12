@@ -38,7 +38,7 @@
     "mark": {
         "type": "arc",
         "innerRadius": 30,
-        "stroke": "purples"
+        "stroke": "black"
     },
     "encoding": {
         "theta": {
