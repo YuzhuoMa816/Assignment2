@@ -64,7 +64,7 @@
               "field": "Ladderscore",
               "type": "quantitative"
             },
-            "color": {"value": "black"},
+            "color": {"value": "#D1D100"},
             "size": {"value": 3}
           }
         }
