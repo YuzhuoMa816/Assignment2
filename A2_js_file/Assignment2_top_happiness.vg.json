@@ -1,101 +1,95 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title":["Top 30 High happiness countries and the trend overview"],
+  "title": ["Top 30 High happiness countries and the trend overview"],
   "data": {
     "url": "https://raw.githubusercontent.com/YuzhuoMa816/Assignment2/master/A2_data/world-happiness-report-2021.csv"
   },
-  "hconcat": [{
-    "mark": "bar",
-    "transform": [
+  "hconcat": [
+    {
+      "layer": [
         {
-          "window": [
+          "mark": "bar",
+          "transform": [
             {
-              "op": "rank",
-              "as": "rank"
-            }
+              "window": [{"op": "rank", "as": "rank"}],
+              "sort": [{"field": "Ladderscore", "order": "descending"}]
+            },
+            {"filter": "datum.rank <= 30"},
+            {"filter": {"param": "brush"}}
           ],
-          "sort": [
-            {
+          "encoding": {
+            "y": {
+              "field": "Country_name",
+              "type": "nominal",
+              "axis": {"minExtent": 200, "title": null},
+              "sort": {
+                "field": "Ladderscore",
+                "op": "average",
+                "order": "descending"
+              }
+            },
+            "x": {
               "field": "Ladderscore",
-              "order": "descending"
-            }
-          ]
+              "type": "quantitative",
+              "axis": {"orient": "top"},
+              "scale": {"domain": [0, 8]}
+            },
+            "color": {
+              "field": "Country_name",
+              "type": "nominal",
+              "sort": "x",
+              "scale": {"scheme": "purples"},
+              "legend": null
+            },
+            "tooltip": [
+              {
+                "field": "Regional_indicator",
+                "type": "nominal",
+                "title": "Regional indicator"
+              },
+              {
+                "field": "Ladderscore",
+                "type": "quantitative",
+                "format": ",",
+                "title": "Happiness Score"
+              }
+            ]
+          }
         },
         {
-          "filter": "datum.rank <= 30"
-        },
-        {
-      "filter": {"param": "brush"}
-    }
-    ],
-    "encoding": {
-      "y": {
-          "field": "Country_name",
-          "type": "nominal",
-          "axis": {"minExtent": 200, "title": null},
-          "sort": {
-            "field": "Ladderscore",
-            "op": "average",
-            "order": "descending"
+          "mark": "rule",
+          "encoding": {
+            "x": {
+              "aggregate": "mean",
+              "field": "Ladderscore",
+              "type": "quantitative"
+            },
+            "color": {"value": "black"},
+            "size": {"value": 3}
           }
-        },
-      "x": {
-          "field": "Ladderscore",
-          "type": "quantitative",
-          "axis": {"orient": "top"},
-          "scale":{"domain":  [0, 8]}
-        },
-        "color": {
-          "field": "Country_name",
-          "type": "nominal",
-          "sort": "x",
-          "scale": {
-            "scheme": "purples"
-          }
-        },
-        "tooltip": [
-          {
-            "field": "Regional_indicator",
-            "type": "nominal",
-            "title": "Regional indicator"
-          },
-          {
-            "field": "Ladderscore",
-            "type": "quantitative",
-            "format": ",",
-            "title": "Happiness Score"
-          }
-        ]
-    }
-  }, {
-    "height": 200,
-    "width": 50,
-    "params": [{
-      "name": "brush",
-      "select": {
-        "type": "interval",
-        "encodings": ["y"]
-      }
-    }],
-    "mark": "bar",
-    "encoding": {
-      "y": {
-          "field": "Country_name",
-          "type": "nominal",
-          "sort": {
-            "field": "Ladderscore",
-            "op": "average",
-            "order": "descending"
-          },
-          "axis":null
-        },
-      "x": {
-          "field": "Ladderscore",
-          "type": "quantitative",
-          "axis":null
-          
         }
+      ]
+    },
+    {
+      "height": 200,
+      "width": 50,
+      "params": [
+        {"name": "brush", "select": {"type": "interval", "encodings": ["y"]}}
+      ],
+      "mark": "bar",
+      "encoding": {
+        "y": {
+          "field": "Country_name",
+          "type": "nominal",
+          "sort": {
+            "field": "Ladderscore",
+            "op": "average",
+            "order": "descending"
+          },
+          "axis": null
+        },
+        "x": {"field": "Ladderscore", "type": "quantitative", "axis": null}
+      }
     }
-  }
   ]
 }
