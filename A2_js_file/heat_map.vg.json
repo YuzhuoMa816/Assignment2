@@ -3,17 +3,14 @@
     "data": {
         "url": "https://raw.githubusercontent.com/YuzhuoMa816/Assignment2/master/A2_data/world-happiness-report-2021.csv"
     },
-
-    "mark": "rect",
-    "width": 300,
+    "width": 350,
     "height": 250,
-
     "params": [
         {
-            "name":"Region_selection",
-            "bind":{
+            "name": "Region_selection",
+            "bind": {
                 "input": "select",
-                "options":[
+                "options": [
                     null,
                     "Western Europe",
                     "Middle East and North Africa",
@@ -44,7 +41,9 @@
         }
     ],
     "transform": [
-        {"filter": "Region_selection == null || datum.Regional_indicator == Region_selection"}
+        {
+            "filter": "Region_selection == null || datum.Regional_indicator == Region_selection"
+        }
     ],
     "encoding": {
         "x": {
@@ -60,11 +59,6 @@
             },
             "field": "Social_support",
             "type": "quantitative"
-        },
-        "color": {
-            "field":"Ladderscore",
-            "type": "quantitative",
-            "scale": {"type": "linear","scheme":"bluepurple"}
         },
         "tooltip": [
             {
@@ -90,8 +84,51 @@
                 "format": ",",
                 "title": "Freedom_to_make_life_choices"
             }
-        ]
+        ],
+        "color": {
+            "field": "Ladderscore",
+            "type": "quantitative",
+            "scale": {
+                "type": "linear",
+                "scheme": "bluepurple"
+            }
+        }
     },
+    "layer": [
+        {
+            "mark": "rect"
+        },
+        {
+            "mark":{
+                "type": "text",
+                "align":"left",
+                "baseline": "middle",
+                "dx":8,
+                "fontSize": 11.5,
+                "fontStyle": "italic",
+                "color":"darkgrey"
+            },
+            "encoding": {
+                "text":{"field":"Country_name", "type": "nominal"},
+                "opacity": {
+                    "condition": {
+                      "test": "datum['Country_name'] == 'Australia' || datum['Country_name'] == 'China' || datum['Country_name'] == 'Turkmenistan' || datum['Country_name'] == 'India' || datum['Country_name'] == 'Afghanistan' || datum['Country_name'] == 'Israel'",
+                      "value": 1
+                    },
+                    "value": 0
+                  },
+                "color":{
+                    "field": "Country_name",
+                    "type": "nominal",
+                    "scale": {
+                        "type": "ordinal",
+                        "scheme": "warmgreys"
+                    },
+                    "legend":null
+                }
+            }
+        }
+    ],
     "config": {
         "view": {
             "stroke": "transparent"
