@@ -1,8 +1,5 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": [
-    "Top 30 High happiness countries and the trend overview"
-  ],
   "data": {
     "url": "https://raw.githubusercontent.com/YuzhuoMa816/Assignment2/master/A2_data/world-happiness-report-2021.csv"
   },
