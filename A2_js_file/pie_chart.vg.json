@@ -93,7 +93,7 @@
             "type": "nominal",
             "scale": {
                 "type": "ordinal",
-                "scheme": "tableau20"
+                "scheme": "category20"
             }
         }
     }

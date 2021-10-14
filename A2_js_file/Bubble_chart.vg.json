@@ -1,8 +1,8 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": "Relationship between Logged_GDP_per_capita and Healthy_life_expectancy with Happiness Score",
-    "width": 500,
-    "height": 500,
+    "width": 400,
+    "height": 400,
     "data":{
         "url": "https://raw.githubusercontent.com/YuzhuoMa816/Assignment2/master/A2_data/world-happiness-report-2021.csv"
     },
@@ -99,7 +99,7 @@
                             "South Asia"
                         ],
                         "range":[
-                            "#800000",
+                            "#42d4f4",
                             "#9A6324",
                             "#808000",
                             "#000075",
@@ -108,7 +108,8 @@
                             "#e6194B",
                             "#ffe119",
                             "#911eb4",
-                            "#42d4f4"
+                            "#800000"
+                            
                         ]
                     }
                 },

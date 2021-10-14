@@ -1,8 +1,8 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": "World Happiness Report of 2021",
-    "width": 600,
-    "height": 400,
+    "width": 680,
+    "height": 350,
     "projection":{
         "type": "equirectangular",
         "center":{"expr": "center_to"},
@@ -92,8 +92,16 @@
                
             },
             "tooltip": [
-                {"field": "properties.NAME" , "type": "nominal", "title": "Country_name"},
-                {"field": "Ladderscore", "type": "quantitative"}
+                {
+                    "field": "properties.NAME",
+                    "type": "nominal",
+                    "title": "Country Name"
+                },
+                {
+                    "field": "Ladderscore",
+                    "type": "quantitative",
+                    "title": "Happiness Score"
+                }
             ]
         }
     }
