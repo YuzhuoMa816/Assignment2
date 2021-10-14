@@ -30,7 +30,6 @@
         </div>
     </div>
 
-    <hr class="seperate">
 
     <div class="Visualisation">
         <h2>Logged GDP and  healthy life</h2>
@@ -40,12 +39,21 @@
 
 
     <script type = "text/javascript">
-        var spec1 = "A2_js_file/Assignment2_map.vg.json";
+        var spec1 = "./map.vg.json";
+        var spec2 = "./Bubble_chart.vg.json";
+        var spec3 = "./pie_chart.vg.json";
+        var spec4 = "./top_happiness.vg.json";
+        var spec5 = "./heat_map.vg.json";
+
+
+
+
+
         vegaEmbed('#Happiness_map', spec1)
-
-        var spec2 = "A2_js_file/Assignment2_Bubble_chart.vg.json";
         vegaEmbed('#Happiness_bubble_chart', spec2)
-
+        // vegaEmbed('#Happiness_pie_chart', spec3)
+        // vegaEmbed('#Happiness_top_chart', spec4)
+        // vegaEmbed('#Happiness_heat_map_chart', spec5)
     </script>
 </body>
 </html>
