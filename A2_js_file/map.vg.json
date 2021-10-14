@@ -33,7 +33,7 @@
                     [-80, -8.1],
                     [20, 60.1]
                 ],
-                "labels": ["Whole World", "North America and ANZ", "East Asia", "Southeast Asia", "Latin America and Caribbean","Western Europe"],
+                "labels": ["Middle East and North Africa", "North America and ANZ", "East Asia", "Southeast Asia", "Latin America and Caribbean","Western Europe"],
                 "name": "Map Centre in: "
             }
         }
