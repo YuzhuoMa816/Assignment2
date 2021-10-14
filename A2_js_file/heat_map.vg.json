@@ -3,8 +3,8 @@
     "data": {
         "url": "https://raw.githubusercontent.com/YuzhuoMa816/Assignment2/master/A2_data/world-happiness-report-2021.csv"
     },
-    "width": 350,
-    "height": 250,
+    "width":  300,
+    "height":  300,
     "params": [
         {
             "name": "Region_selection",
