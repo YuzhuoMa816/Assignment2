@@ -1,6 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": ["Top 30 High happiness countries and the trend overview"],
+  "title": [
+    "Top 30 High happiness countries and the trend overview"
+  ],
   "data": {
     "url": "https://raw.githubusercontent.com/YuzhuoMa816/Assignment2/master/A2_data/world-happiness-report-2021.csv"
   },
@@ -11,17 +13,36 @@
           "mark": "bar",
           "transform": [
             {
-              "window": [{"op": "rank", "as": "rank"}],
-              "sort": [{"field": "Ladderscore", "order": "descending"}]
+              "window": [
+                {
+                  "op": "rank",
+                  "as": "rank"
+                }
+              ],
+              "sort": [
+                {
+                  "field": "Ladderscore",
+                  "order": "descending"
+                }
+              ]
             },
-            {"filter": "datum.rank <= 30"},
-            {"filter": {"param": "brush"}}
+            {
+              "filter": "datum.rank <= 30"
+            },
+            {
+              "filter": {
+                "param": "brush"
+              }
+            }
           ],
           "encoding": {
             "y": {
               "field": "Country_name",
               "type": "nominal",
-              "axis": {"minExtent": 200, "title": null},
+              "axis": {
+                "minExtent": 200,
+                "title": null
+              },
               "sort": {
                 "field": "Ladderscore",
                 "op": "average",
@@ -31,14 +52,23 @@
             "x": {
               "field": "Ladderscore",
               "type": "quantitative",
-              "axis": {"orient": "top"},
-              "scale": {"domain": [0, 8]}
+              "axis": {
+                "orient": "top"
+              },
+              "scale": {
+                "domain": [
+                  0,
+                  8
+                ]
+              }
             },
             "color": {
               "field": "Country_name",
               "type": "nominal",
               "sort": "x",
-              "scale": {"scheme": "purples"},
+              "scale": {
+                "scheme": "purples"
+              },
               "legend": null
             },
             "tooltip": [
@@ -64,8 +94,12 @@
               "field": "Ladderscore",
               "type": "quantitative"
             },
-            "color": {"value": "#D1D100"},
-            "size": {"value": 3}
+            "color": {
+              "value": "#D1D100"
+            },
+            "size": {
+              "value": 3
+            }
           }
         }
       ]
@@ -74,7 +108,15 @@
       "height": 200,
       "width": 50,
       "params": [
-        {"name": "brush", "select": {"type": "interval", "encodings": ["y"]}}
+        {
+          "name": "brush",
+          "select": {
+            "type": "interval",
+            "encodings": [
+              "y"
+            ]
+          }
+        }
       ],
       "mark": "bar",
       "encoding": {
@@ -88,7 +130,11 @@
           },
           "axis": null
         },
-        "x": {"field": "Ladderscore", "type": "quantitative", "axis": null}
+        "x": {
+          "field": "Ladderscore",
+          "type": "quantitative",
+          "axis": null
+        }
       }
     }
   ]
