@@ -26,7 +26,7 @@
               ]
             },
             {
-              "filter": "datum.rank <= 30"
+              "filter": "datum.rank <= 20"
             },
             {
               "filter": {

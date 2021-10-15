@@ -50,7 +50,7 @@
             "field": "Healthy_life_expectancy",
             "type": "quantitative",
             "title": "Healthy life expectancy",
-            "axis": {"tickCount": 7},
+            "axis": {"tickCount": 12},
             "scale": {"type": "linear", "domain": [45, 80]}
         },
         "y":{
