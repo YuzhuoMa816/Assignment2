@@ -27,9 +27,18 @@ body{
   margin-bottom: 25px;
   
 }
+.map{
+  width: 680px;
+}
+#header_background{
+  width: 100%;
+  height:auto;
+  background:url("banner-3520443_1280.png")
+}
 .barchart{
   left: 100px;
 }
+
 .description h2, h1{
   margin-top:0px;
 }
@@ -58,4 +67,8 @@ body{
 }
 .description-left{
   padding-right: 20px;
+}
+
+.final_world{
+  font-size: 14px;
 }

@@ -1,6 +1,5 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Relationship between Logged_GDP_per_capita and Healthy_life_expectancy with Happiness Score",
     "width":  300,
     "height": 300,
     "data":{
@@ -80,7 +79,8 @@
                         "domain": [2, 3, 4, 5, 6, 7, 8],
                         "range": [10, 30, 70, 130, 220, 380, 500, 600]
                       },
-                    "legend": {"format": ".1s"}
+                    "legend": {"format": ".1s"},
+                    "title":"Happiness score "
                 },
                 "color":{
                     "field":"Regional_indicator",

@@ -85,25 +85,66 @@
 
 
     <div class="Visualisation">
-        <h1>The World Happiness Report Visualisation</h1>
 
+
+        <h1>The World Happiness Report Visualisation</h1>
         <h4> This report use the data from
             149 country to show us the factors that affect happiness score </h4>
 
-        <h2>Happiness_map</h2>
-        <div id="Happiness_map" class="vis-container"></div>
+
+        <img src="banner-3520443_1280.png" alt="heading picture" style="width: 1200px;height: 100px;">
+        <hr>
+        <div class="map">
+            <h2>Happiness_map</h2>
+            <div id="Happiness_map" class="vis-container"></div>
+        </div>
+        <!-- map text:  The user can select the zoom center to different region and 
+        zoom in to clearly see the detail countries' happiness score distrubution-->
 
         <h2>Happiness_bubble_chart</h2>
         <div id="Happiness_bubble_chart" class="vis-container"></div>
+        <!-- bubble chart text: select region at botton to focus on the region 
+        click the right region sign to hightlight region. 
+        The bubble chart here demonstrate how the healthy life expectancy and 
+        logged GDP Per Capita related to the happiness score
+        x-axis represents healthy life expectancy, y-axis represents logged GDP Per Capita
+        bbubble size represent happiness score-->
+
 
         <h2>Country distribution of the report</h2>
         <div id="Happiness_pie_chart" class="vis-container"></div>
+        <!-- Pie chart context: The Radial Plot showed the countries distribution along the 
+        world from 149 countries
+         Put the mouse on and click to focus-->
+
 
         <h2>Freedom_to_make_life_choices and social support</h2>
         <div id="Happiness_heat_map_chart" class="vis-container"></div>
+        <!--  heat_map text: select region at botton to focus on the region
+            The Heat Map demonstrate how the factor(Freedom_to_Make_Lifechoice) and 
+        factor(Social-Support) related to the happiness score.
+        Color represent the happiness score
+        -->
 
-        <h2>Happiness_top_chart</h2>
+        <!-- <h2>Happiness_top_chart</h2> -->
         <div id="Happiness_top_chart" class="vis-container"></div>
+        <!-- bar text: the yello line in the bar chart is the average happiness score 
+        regards the 149 countries, the right small version showed the whole sorted countries distribution -->
+
+
+
+
+        <div class="pure-g">
+            <div class="pure-u-1-1 final_world">
+                <p>The visualisation is created by <a href="https://github.com/YuzhuoMa816"
+                        target="_blank">YuzhuoMa</a>.
+                    The datasource is <a
+                        href="https://www.kaggle.com/ajaypalsinghlo/world-happiness-report-2021?select=world-happiness-report-2021.csv"
+                        target=" _blank">from Kaggle</href>
+                        .</p>
+            </div>
+        </div>
+        <!-- end page -->
 
     </div>
     <script type="text/javascript">
@@ -112,7 +153,6 @@
         var spec3 = "A2_js_file/pie_chart.vg.json";
         var spec4 = "A2_js_file/top_happiness.vg.json";
         var spec5 = "A2_js_file/heat_map.vg.json";
-
 
 
         vegaEmbed('#Happiness_map', spec1)
